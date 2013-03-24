@@ -5,6 +5,8 @@ void function(root){
 
     util.liberate = Function.prototype.bind.bind(Function.prototype.call)
 
+    util.detach = Function.prototype.bind.bind(Function.prototype.apply)
+
     util.slice = util.liberate(Array.prototype.slice)
 
     util.times = function(nr, fun) {
@@ -107,9 +109,9 @@ void function(root){
     }
 
     util.bind = function(fn){
-        var args = [].slice.call(arguments, 1);
+        var args = util.slice(arguments, 1);
         return function(){
-            var args2 = [].slice.call(arguments);
+            var args2 = util.slice(arguments);
             return fn.apply(this, args.concat(args2))
         }
     }

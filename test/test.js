@@ -9,6 +9,13 @@ describe('liberate', function(){
     })
 })
 
+describe('detach', function(){
+    it('same as liberate, but arguments are given in an array', function(){
+        var slice = u.detach([].slice);
+        expect(slice([1, 2, 3, 4], [1,3])).to.eql([2,3]);
+    })
+})
+
 describe('slice', function(){
     it('slices into array ', function(){
         expect(u.slice([1, 2], 1)[0]).to.be(2);
