@@ -1,6 +1,6 @@
 {
   "name": "totemizer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "my essential toolkit",
   "main": "index.js",
   "directories": {
