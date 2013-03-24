@@ -97,3 +97,10 @@ describe('allIntegers', function(){
         expect(u.allIntegers([3,1, 1.5,0])).to.be(false)
     })
 })
+
+describe('bind', function(){
+    it('partially applies arguments to a function', function(){
+        var t = u.bind(function(a, b, c){ return a + b + c }, 1, 1);
+        expect(t(2)).to.be(4)
+    })
+})

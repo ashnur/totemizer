@@ -106,6 +106,15 @@ void function(root){
         return arr.reduce(function (m, e, i, a) { return (m==-1 || Math.abs(e) > Math.abs(a[m])) ? i : m }, -1)
     }
 
+    util.bind = function(fn){
+        var args = [].slice.call(arguments, 1);
+        return function(){
+            var args2 = [].slice.call(arguments);
+            return fn.apply(this, args.concat(args2))
+        }
+    }
+
+
     if ( module !== undefined && module.exports ) {
         module.exports = util
     } else {
