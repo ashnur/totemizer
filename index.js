@@ -147,8 +147,8 @@ void function(root){
         return arr
     }
 
-    util.forEachOwn = function (fun, thisArg) {
-        return own(this).forEach(fun, thisArg)
+    util.forEachOwn = function (obj, fun, thisArg) {
+        return own(obj).forEach(fun, thisArg)
     }
 
     if ( module !== undefined && module.exports ) {
