@@ -4,7 +4,8 @@ require('./node_modules/es5-shim/es5-sham.js')
 void function(root){
     'use strict'
 
-    var util = Object.create(null);
+    var util = Object.create(null)
+        , own = Object.getOwnPropertyNames
 
     util.liberate = Function.prototype.bind.bind(Function.prototype.call)
 
@@ -145,6 +146,11 @@ void function(root){
 
         return arr
     }
+
+    util.forEachOwn = function (fun, thisArg) {
+        return own(this).forEach(fun, thisArg)
+    }
+
     if ( module !== undefined && module.exports ) {
         module.exports = util
     } else {
