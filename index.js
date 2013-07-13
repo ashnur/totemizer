@@ -40,10 +40,10 @@ void function(root){
             , continuePred
             ;
 
-        stepper = stepper || function (x) { return x + 1; }
+        stepper = stepper || function(x) { return x + 1; }
 
-        continuePred = (stepper(i) > i) ? function (x) { return x <= limit }
-                                        :  function (x) { return x >= limit }
+        continuePred = (stepper(i) > i) ? function(x) { return x <= limit }
+                                        :  function(x) { return x >= limit }
 
         while (continuePred(i)) {
             list.push(i)
@@ -84,7 +84,7 @@ void function(root){
         result = []
         each   = []
 
-        arr.forEach(function (value) {
+        arr.forEach(function(value) {
 
             each.push(value)
 
@@ -105,11 +105,11 @@ void function(root){
     util.allIntegers = function(arr){ return arr.every(util.isInt) }
 
     util.indexOfMax = function(arr){
-        return arr.reduce(function (m, e, i, a) { return (m==-1 || e > a[m]) ? i : m }, -1)
+        return arr.reduce(function(m, e, i, a) { return (m==-1 || e > a[m]) ? i : m }, -1)
     }
 
     util.indexOfAbsMax = function(arr){
-        return arr.reduce(function (m, e, i, a) { return (m==-1 || Math.abs(e) > Math.abs(a[m])) ? i : m }, -1)
+        return arr.reduce(function(m, e, i, a) { return (m==-1 || Math.abs(e) > Math.abs(a[m])) ? i : m }, -1)
     }
 
     util.bind = function(fn){
@@ -120,34 +120,37 @@ void function(root){
         }
     }
 
-    util.enslave = function (fn) {
+    util.enslave = function(fn) {
         return function(){
             return fn.bind(null, this).apply(null, arguments)
         }
     }
 
-    util.rand =  function (min, max){
-        var r =  Math.floor(Math.random() * (max - min + 1)) + min;
-        return  r == 0 ?  rand(max, min) : r
+    util.randFloat = function randFloat(min, max){
+        return Math.random() * (max - min) + min
     }
 
-    util.getRandomArray = function (minLength, maxLength){
+    util.rand =  function rand(min, max){
+        return Math.round(randFloat(min, max))
+    }
+
+    util.getRandomArray = function(minLength, maxLength){
 
         var length = rand(maxLength || 6, minLength || 3)
-            , common_factor = rand(13, -13)
+            , common_factor = rand(-13, 13)
             , arr=[]
             ;
 
         while ( maxLength-- > minLength ) {
-            arr.push(rand(13, -13)*common_factor)
+            arr.push(rand(-13, 13)*common_factor)
         }
 
-        arr.push(rand(13, -13)*common_factor)
+        arr.push(rand(-13, 13)*common_factor)
 
         return arr
     }
 
-    util.forEachOwn = function (obj, fun, thisArg) {
+    util.forEachOwn = function(obj, fun, thisArg) {
         return own(obj).forEach(fun, thisArg)
     }
 
