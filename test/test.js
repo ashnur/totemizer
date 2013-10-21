@@ -111,3 +111,11 @@ describe('bind', function(){
         expect(t(2)).to.be(4)
     })
 })
+
+describe('arrayWithLength', function(){
+    it('creates new array with specified length', function(){
+        var arr = u.arrayWithLength(5);
+        expect(arr.join('x')).to.be('xxxx')
+        expect(arr.map(function(){return 'x'}).join('')).to.be('xxxxx')
+    })
+})

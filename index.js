@@ -154,6 +154,12 @@ void function(root){
         return own(obj).forEach(fun, thisArg)
     }
 
+    util.arrayWithLength =  function arrayWithLength(length){
+        var arr = Array(length)
+        while(length--){ arr[length]=undefined }
+        return arr
+    }
+
     if ( module !== undefined && module.exports ) {
         module.exports = util
     } else {
